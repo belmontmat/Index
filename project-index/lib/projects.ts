@@ -20,7 +20,7 @@ export const projects: Project[] = [
     tags: ['Python3', 'Machine Learning', 'Data Analysis'],
     link: {
       type: 'external',
-      url: 'https://drive.google.com/file/d/1lyBhGcbWNyVcrjIkLLeEHJSncaucCgcx/view?usp=sharing',
+      url: 'https://colab.research.google.com/drive/1lyBhGcbWNyVcrjIkLLeEHJSncaucCgcx',
     },
     featured: true,
   },
