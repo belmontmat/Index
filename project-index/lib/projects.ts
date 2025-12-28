@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'Typescript', 'Blockchain'],
     link: {
       type: 'demo',
-      url: 'ag-chain.vercel.app',
+      url: 'https://ag-chain.vercel.app',
     },
     featured: true,
   },
