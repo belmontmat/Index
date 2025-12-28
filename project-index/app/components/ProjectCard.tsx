@@ -7,9 +7,9 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const CardContent = (
-    <article className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+    <article className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] h-full flex flex-col">
       {/* Image with 16:9 aspect ratio */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
         <Image
           src={`/projects/${project.image}`}
           alt={project.title}
@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-3">
+      <div className="p-6 space-y-3 flex flex-col flex-grow">
         <h3 className="text-xl font-semibold">{project.title}</h3>
         <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
           {project.description}
@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Tech stack tags */}
         {project.tags && project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 pt-2">
+          <div className="flex flex-wrap gap-2 pt-2 mt-auto">
             {project.tags.map((tag) => (
               <span
                 key={tag}
