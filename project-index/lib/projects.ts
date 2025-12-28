@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     id: 'project-2',
     title: 'Auto Government Chain',
-    description: 'A demonstation of a blockchain-based voting system.',
+    description: 'A demonstration of a blockchain-based voting system.',
     image: 'block-vote.png',
     tags: ['Next.js', 'Typescript', 'Blockchain'],
     link: {
