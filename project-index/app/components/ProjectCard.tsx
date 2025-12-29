@@ -7,9 +7,9 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const CardContent = (
-    <article className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] h-full flex flex-col">
+    <article className="group relative rounded-3xl border-2 border-retro-brown dark:border-retro-brown bg-retro-cream dark:bg-retro-darkBrown transition-colors duration-300 hover:shadow-2xl hover:scale-[1.02] hover:border-retro-burntOrange dark:hover:border-retro-burntOrange h-full flex flex-col overflow-hidden">
       {/* Image with 16:9 aspect ratio */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
+      <div className="relative aspect-[16/9] w-full bg-retro-paleYellow dark:bg-retro-charcoal flex-shrink-0 transition-colors duration-300">
         <Image
           src={`/projects/${project.image}`}
           alt={project.title}
@@ -21,8 +21,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-6 space-y-3 flex flex-col flex-grow">
-        <h3 className="text-xl font-semibold">{project.title}</h3>
-        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+        <h3 className="text-xl font-semibold text-retro-brown dark:text-retro-cream transition-colors duration-300">
+          {project.title}
+        </h3>
+        <p className="text-retro-darkBrown dark:text-retro-paleYellow leading-relaxed line-clamp-3 transition-colors duration-300">
           {project.description}
         </p>
 
@@ -32,7 +34,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-sm bg-zinc-100 dark:bg-zinc-800 rounded-full text-zinc-700 dark:text-zinc-300"
+                className="px-3 py-1 text-sm bg-retro-paleYellow dark:bg-retro-brown rounded-full text-retro-brown dark:text-retro-cream border border-retro-brown dark:border-retro-cream transition-colors duration-300"
               >
                 {tag}
               </span>
@@ -45,12 +47,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   // If project has link, wrap in anchor tag
   if (project.link) {
+    const linkTypeLabel = project.link.type === 'github' ? 'GitHub repository' : project.link.type === 'demo' ? 'Live demo' : 'External link';
+
     return (
       <a
         href={project.link.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="block"
+        className="block focus:outline-none focus:ring-4 focus:ring-retro-burntOrange dark:focus:ring-retro-golden rounded-3xl transition-shadow"
+        aria-label={`${project.title} - ${linkTypeLabel}`}
       >
         {CardContent}
       </a>

@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@variant dark (.dark &);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-retro-cream: #fef7ed;
+  --color-retro-paleYellow: #fde7ad;
+  --color-retro-golden: #fcc85c;
+  --color-retro-orange: #f89e4f;
+  --color-retro-burntOrange: #e15f41;
+  --color-retro-brown: #4a3428;
+  --color-retro-darkBrown: #2a1f1a;
+  --color-retro-charcoal: #1a1410;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  background-color: #fef7ed;
+  color: #4a3428;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark body {
+  background-color: #1a1410;
+  color: #fef7ed;
+}
+
+/* Retro 70s flowing corner stripes background */
+body::before {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 800px 400px at bottom left,
+      #fde7ad 0%,
+      #fde7ad 12%,
+      #fcc85c 12%,
+      #fcc85c 24%,
+      #f89e4f 24%,
+      #f89e4f 36%,
+      #e15f41 36%,
+      #e15f41 48%,
+      #4a3428 48%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse 800px 400px at top right,
+      #fde7ad 0%,
+      #fde7ad 12%,
+      #fcc85c 12%,
+      #fcc85c 24%,
+      #f89e4f 24%,
+      #f89e4f 36%,
+      #e15f41 36%,
+      #e15f41 48%,
+      #4a3428 48%,
+      transparent 50%
+    );
+  opacity: 0.3;
+}
+
+.dark body::before {
+  background:
+    radial-gradient(ellipse 800px 400px at bottom left,
+      #fde7ad 0%,
+      #fde7ad 12%,
+      #fcc85c 12%,
+      #fcc85c 24%,
+      #f89e4f 24%,
+      #f89e4f 36%,
+      #e15f41 36%,
+      #e15f41 48%,
+      #4a3428 48%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse 800px 400px at top right,
+      #fde7ad 0%,
+      #fde7ad 12%,
+      #fcc85c 12%,
+      #fcc85c 24%,
+      #f89e4f 24%,
+      #f89e4f 36%,
+      #e15f41 36%,
+      #e15f41 48%,
+      #4a3428 48%,
+      transparent 50%
+    );
+  opacity: 0.3;
+}
+
+/* Ensure content is above the background */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Remove sr-only when focused */
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: revert;
+  margin: revert;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
