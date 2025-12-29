@@ -63,7 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} relative min-h-screen [transform:translateZ(0)] antialiased bg-retro-cream dark:bg-retro-charcoal text-retro-brown dark:text-retro-cream transition-colors duration-300`}
       >
         <Script id="theme-script" strategy="beforeInteractive">
           {themeScript}

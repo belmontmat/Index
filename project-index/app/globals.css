@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark, .dark *));
+@custom-variant dark (.dark &);
 
 @theme {
   --color-retro-cream: #fef7ed;
@@ -13,20 +13,7 @@
   --color-retro-charcoal: #1a1410;
 }
 
-body {
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  position: relative;
-  min-height: 100vh;
-  background-color: var(--color-retro-cream);
-  color: var(--color-retro-brown);
-}
-
-html.dark body {
-  background-color: var(--color-retro-charcoal);
-  color: var(--color-retro-cream);
-}
-
-/* Retro 70s flowing corner stripes background */
+/* Retro 70s flowing corner stripes background - must use custom CSS for pseudo-element */
 body::before {
   content: '';
   position: fixed;
@@ -62,38 +49,5 @@ body::before {
       transparent 50%
     );
   opacity: 0.3;
-}
-
-/* Dark mode stripes - same as light mode for now */
-
-/* Ensure content is above the background */
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* Custom utilities */
-@layer utilities {
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
-
-  .focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: revert;
-    margin: revert;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
+  transform: translateZ(0);
 }
