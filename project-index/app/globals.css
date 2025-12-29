@@ -22,7 +22,7 @@ body {
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark body {
+html.dark body {
   background-color: #1a1410;
   color: #fef7ed;
 }
@@ -65,7 +65,7 @@ body::before {
   opacity: 0.3;
 }
 
-.dark body::before {
+html.dark body::before {
   background:
     radial-gradient(ellipse 800px 400px at bottom left,
       #fde7ad 0%,
