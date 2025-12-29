@@ -1,35 +1,37 @@
 'use client';
 
-import { useLayoutEffect, useState } from 'react';
-
-function getInitialTheme() {
-  if (typeof window === 'undefined') return false;
-
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  return savedTheme === 'dark' || (!savedTheme && prefersDark);
-}
+import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(getInitialTheme);
+  // Default to dark mode to match server-side default
+  const [isDark, setIsDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
-  useLayoutEffect(() => {
-    // Apply the theme class on mount
-    document.documentElement.classList.toggle('dark', isDark);
-  }, [isDark]);
+  useEffect(() => {
+    // Only run on client after hydration
+    setIsDark(document.documentElement.classList.contains('dark'));
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setIsDark((prev) => {
       const newIsDark = !prev;
 
       // Update DOM and localStorage
-      document.documentElement.classList.toggle('dark', newIsDark);
+      if (newIsDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
       localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
 
       return newIsDark;
     });
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <button
