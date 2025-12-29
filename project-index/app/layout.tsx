@@ -47,11 +47,10 @@ const themeScript = `
     const theme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     // Default to dark mode if no preference is set
-    const isDark = theme === 'dark' || (theme !== 'light' && prefersDark);
+    const shouldBeDark = theme === 'dark' || (theme !== 'light' && prefersDark);
 
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
+    // Server renders with 'dark' class by default, so only change if we need light mode
+    if (!shouldBeDark) {
       document.documentElement.classList.remove('dark');
     }
   })();
