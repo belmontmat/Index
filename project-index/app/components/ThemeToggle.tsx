@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  // Default to dark mode to match server-side default
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

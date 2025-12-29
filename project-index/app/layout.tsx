@@ -49,9 +49,8 @@ const themeScript = `
     // Default to dark mode if no preference is set
     const shouldBeDark = theme === 'dark' || (theme !== 'light' && prefersDark);
 
-    // Server renders with 'dark' class by default, so only change if we need light mode
-    if (!shouldBeDark) {
-      document.documentElement.classList.remove('dark');
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
     }
   })();
 `;
@@ -62,9 +61,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
         <Script id="theme-script" strategy="beforeInteractive">
           {themeScript}
