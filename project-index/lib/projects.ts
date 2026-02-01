@@ -36,4 +36,16 @@ export const projects: Project[] = [
     },
     featured: true,
   },
+  {
+    id: 'project-3',
+    title: 'Cheaptest',
+    description: 'A cheap e2e test orchestration tool',
+    image: 'CICD.png',
+    tags: ['Typescript', "Test Automation", 'CI/CD', 'DevOps'],
+    link: {
+      type: 'github',
+      url: 'https://github.com/belmontmat/cheaptest',
+    },
+    featured: true,
+  },
 ];
