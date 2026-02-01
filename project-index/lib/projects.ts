@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     id: 'project-2',
     title: 'Auto Government Chain',
-    description: 'A demonstration of a blockchain-based voting system.',
+    description: 'A demonstration of a multi-party, ranked-choice, blockchain-based voting system.',
     image: 'block-vote.jpg',
     tags: ['Next.js', 'Typescript', 'Blockchain'],
     link: {
@@ -39,9 +39,9 @@ export const projects: Project[] = [
   {
     id: 'project-3',
     title: 'Cheaptest',
-    description: 'A cheap e2e test orchestration tool',
+    description: 'A test orchestration tool that can leverage ECS or EKS to balance and run your end-to-end tests in parallel.',
     image: 'CICD.png',
-    tags: ['Typescript', "Test Automation", 'CI/CD', 'DevOps'],
+    tags: ['Typescript', "Test Automation", 'CI/CD', 'DevOps', 'Playwright', 'Cypress', 'Selenium'],
     link: {
       type: 'github',
       url: 'https://github.com/belmontmat/cheaptest',
